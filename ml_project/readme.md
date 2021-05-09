@@ -11,7 +11,7 @@ python setup.py install
 
 Запуск:
 
-python.exe ml_example/main.py --config-dir YOUR_PATH\ml_project\configs hydra.run.dir=.
+python.exe ml_example/main.py --config-dir путь к проекту\ml_project\configs hydra.run.dir=.
 
 Тестирование:
 
