@@ -1,8 +1,7 @@
 import pandas as pd
-from sklearn.compose import ColumnTransformer
 from sklearn.pipeline import Pipeline
+from sklearn.compose import ColumnTransformer
 from sklearn.preprocessing import StandardScaler, OneHotEncoder
-
 from ml_example.enities.feature_params import FeatureParams
 
 
@@ -23,13 +22,13 @@ def process_categorical_features(categorical_df: pd.DataFrame) -> pd.DataFrame:
 def build_numerical_pipeline() -> Pipeline:
     num_pipeline = Pipeline(
         [
-            ("norm", StandardScaler()),
+            ("scaler", StandardScaler()),
         ]
     )
     return num_pipeline
 
 
-def process_numerical_features(numerical_df: pd.DataFrame) -> pd.DataFrame:
+def build_numerical_features(numerical_df: pd.DataFrame) -> pd.DataFrame:
     num_pipeline = build_numerical_pipeline()
     return pd.DataFrame(num_pipeline.fit_transform(numerical_df).toarray())
 

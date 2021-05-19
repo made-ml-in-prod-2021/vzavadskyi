@@ -6,7 +6,8 @@ splitting_params:
   val_size: 0.2
   random_state: 42
 train_params:
-  model_type: "KNeighborsClassifier"
+  model_type: "RandomForestClassifier"
+  n_neighbors: "10"
 feature_params:
   categorical_features:
     - "sex"

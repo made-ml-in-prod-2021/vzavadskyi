@@ -1,11 +1,10 @@
+import yaml
 from dataclasses import dataclass
+from marshmallow_dataclass import class_schema
+from omegaconf import DictConfig, OmegaConf
 from .split_params import SplittingParams
 from .train_params import TrainingParams
 from .feature_params import FeatureParams
-from marshmallow_dataclass import class_schema
-import yaml
-from omegaconf import DictConfig, OmegaConf
-
 
 @dataclass()
 class TrainingPipelineParams:
