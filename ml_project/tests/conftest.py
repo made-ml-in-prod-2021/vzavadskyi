@@ -1,5 +1,4 @@
 import os
-import tmpdir
 import pytest
 from typing import List
 from ml_example.enities.feature_params import FeatureParams
@@ -13,8 +12,7 @@ sample_dataset_name = "sample_for_test.csv"
 def dataset_path():
     data = generate_test_dataset(size_of_sample)
     data.to_csv(f"tests/{sample_dataset_name}")
-    curdir = os.path.dirname(__file__)
-    return os.path.join(curdir, sample_dataset_name)
+    return os.path.join(tmpdir, sample_dataset_name)
 
 
 @pytest.fixture(scope='session')

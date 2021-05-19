@@ -6,7 +6,7 @@ from ml_example.data.make_dataset import read_data, split_train_val_data
 from ml_example.enities import SplittingParams
 
 
-def generate_fake_dataset(size_dataset: int) -> pd.DataFrame:
+def generate_test_dataset(size_dataset: int) -> pd.DataFrame:
     test_data = Faker()
     age = np.random.randint(29, 77, size=size_dataset, dtype='int')
     sex = np.random.randint(0, 2, size=size_dataset, dtype='int')
