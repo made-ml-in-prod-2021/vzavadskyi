@@ -6,7 +6,7 @@ import pytest
 from numpy.testing import assert_allclose
 
 from ml_example.data.make_dataset import read_data
-from ml_example.enities.feature_params import FeatureParams
+from ml_example.enities import FeatureParams
 from ml_example.features.build_features import (
     make_features, extract_target, build_transformer, process_categorical_features
 )

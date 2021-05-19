@@ -14,8 +14,8 @@ from sklearn.metrics import (
     plot_roc_curve,
 )
 
-from ml_example.enities.train_params import TrainingParams
-from ml_example.enities.train_pipeline_params import TrainingPipelineParams
+from ml_example.enities import TrainingParams
+from ml_example.enities import TrainingPipelineParams
 
 SklearnModel = Union[RandomForestClassifier, LogisticRegression]
 

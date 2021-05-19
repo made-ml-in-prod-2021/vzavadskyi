@@ -28,7 +28,7 @@ def build_numerical_pipeline() -> Pipeline:
     return num_pipeline
 
 
-def build_numerical_features(numerical_df: pd.DataFrame) -> pd.DataFrame:
+def process_numerical_features(numerical_df: pd.DataFrame) -> pd.DataFrame:
     num_pipeline = build_numerical_pipeline()
     return pd.DataFrame(num_pipeline.fit_transform(numerical_df).toarray())
 
