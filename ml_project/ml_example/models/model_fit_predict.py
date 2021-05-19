@@ -66,3 +66,9 @@ def serialize_model(model: SklearnModel, output: str) -> str:
     with open(output, "wb") as f:
         pickle.dump(model, f)
     return output
+
+
+def read_model(input: str):
+    with open(input, 'rb') as f:
+        model = pickle.load(f)
+    return model

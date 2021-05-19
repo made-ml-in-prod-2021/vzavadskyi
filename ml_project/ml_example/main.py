@@ -18,6 +18,7 @@ from ml_example.models import (
     predict_model,
     evaluate_model,
     report_model,
+    read_model,
 )
 
 APPLICATION_NAME = 'ml_project'
@@ -53,10 +54,12 @@ def train_pipeline(training_pipeline_params: TrainingPipelineParams):
     logger.debug(f"train_features.shape, %s", train_features.shape)
     logger.debug("train_target.shape, %s", train_target.shape)
 
+
     model = train_model(
         train_features, train_target, training_pipeline_params.train_params
     )
     logger.info("model created.")
+
 
     val_features = make_features(transformer, val_df)
     val_target = extract_target(val_df, training_pipeline_params.feature_params)
@@ -99,4 +102,4 @@ def train_pipeline_command(cfg: DictConfig):
 
 
 if __name__ == "__main__":
-    train_pipeline_command(cfg)
+    train_pipeline_command()

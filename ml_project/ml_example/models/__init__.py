@@ -4,6 +4,7 @@ from .model_fit_predict import (
     predict_model,
     evaluate_model,
     report_model,
+    read_model,
 )
 
 __all__ = [
@@ -12,4 +13,5 @@ __all__ = [
     "evaluate_model",
     "predict_model",
     "report_model",
+    "read_model",
 ]
