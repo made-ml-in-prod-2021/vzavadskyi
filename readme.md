@@ -1,2 +1,1 @@
-
-https://data.mail.ru/profile/v.zavadskii/
+sudo docker-compose up --build
