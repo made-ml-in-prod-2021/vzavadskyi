@@ -10,6 +10,7 @@ default_args = {
     "email": ["airflow@example.com"],
     "retries": 1,
     "retry_delay": timedelta(minutes=5),
+    "email_on_failure": True,
 }
 
 with DAG(
