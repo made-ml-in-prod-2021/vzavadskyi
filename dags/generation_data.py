@@ -19,6 +19,7 @@ with DAG(
     schedule_interval="@daily",
     start_date=days_ago(0),
 ) as dag:
+
     download = DockerOperator(
         image="airflow-download",
         command="/data/raw/{{ ds }}",

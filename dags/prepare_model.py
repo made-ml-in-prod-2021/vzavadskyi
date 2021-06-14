@@ -4,6 +4,7 @@ from datetime import timedelta
 from airflow import DAG
 from airflow.providers.docker.operators.docker import DockerOperator
 from airflow.utils.dates import days_ago
+from airflow.sensors.filesystem import FileSensor
 
 default_args = {
     "owner": "airflow",
@@ -19,6 +20,22 @@ with DAG(
     schedule_interval="@weekly",
     start_date=days_ago(0),
 ) as dag:
+
+    check_data_ready = FileSensor(
+        task_id="wait-raw-data",
+        filepath="/home/vadim/MADE/vzavadskyi/data/raw/data.csv",
+        poke_interval=10,
+        retries=2
+    )
+
+    check_target_data = FileSensor(
+        task_id="wait-target-data",
+        filepath="/home/vadim/MADE/vzavadskyi/data/raw/target.csv",
+        poke_interval=10,
+        retries=2
+    )
+
+
     preprocess = DockerOperator(
         image="airflow-preprocess",
         command="--input-dir /data/raw/{{ ds }} --output-dir /data/processed/{{ ds }}",
@@ -48,4 +65,4 @@ with DAG(
         volumes=["/home/vadim/MADE/vzavadskyi/data:/data"],
     )
 
-    preprocess >> train_test_split >> train_model >> validation_model
+    [check_data_ready, check_target_data] >> preprocess >> train_test_split >> train_model >> validation_model
