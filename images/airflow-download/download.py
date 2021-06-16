@@ -6,7 +6,7 @@ from sklearn.datasets import make_classification
 
 
 @click.command()
-@click.argument("output_dir")
+@click.argument("--output_dir")
 def download(output_dir: str):
     X, y = make_classification(n_samples=1000)
     os.makedirs(output_dir, exist_ok=True)
