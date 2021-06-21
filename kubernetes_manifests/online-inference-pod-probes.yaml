@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: online-inference-health
+  labels:
+    app: online-inference
+spec:
+  containers:
+    - image: vzavadskyi/ml_project_app:v4
+      name: online-inference
+      ports:
+        - containerPort: 8000
+      readinessProbe:
+        httpGet:
+          path: /healz
+          port: 8000
+        initialDelaySeconds: 15
+        periodSeconds: 3

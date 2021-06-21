@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: online-inference-resources
+  labels:
+    app: online-inference
+spec:
+  containers:
+    - image: vzavadskyi/ml_project_app:v1
+      name: online-inference
+      ports:
+        - containerPort: 8000
+      resources:
+        requests:
+          memory: "512Mi"
+          cpu: "500m"
+        limits:
+          memory: "10Gi"
+          cpu: "500m"
